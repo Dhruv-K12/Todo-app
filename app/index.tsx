@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-
+import App from './App';
+import { TodoContextProvider } from '@/context/Todo';
 const index = () => {
+  
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <TodoContextProvider>
+      <App/>
+    </TodoContextProvider>
   )
 }
 
 export default index
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  
+})
