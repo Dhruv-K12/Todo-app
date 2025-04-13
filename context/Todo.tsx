@@ -1,9 +1,17 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 // 1. Define the context type
+interface taskType{
+  name: string;
+  des?: string;
+  catogary:string;
+}
 interface TodoContextType {
   modal: boolean;
   showModal: (modal: boolean) => void;
+  tasks:taskType[];
+  setTasker: React.Dispatch<React.SetStateAction<taskType[]>>
+
 }
 
 // 2. Create the context
@@ -12,10 +20,14 @@ export const TodoContext = createContext<TodoContextType | undefined>(undefined)
 // 3. Create the provider
 export const TodoContextProvider = ({ children }: { children: ReactNode }) => {
   const [modal, setModal] = useState<boolean>(false);
+  const [tasks, setTasks] = useState<taskType[]>([]);
+  console.log(tasks)
 
   const value = {
     modal,
-    showModal: setModal, // <- using the correct function name
+    showModal: setModal,
+    tasks,
+    setTasker:setTasks // <- using the correct function name
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

@@ -3,10 +3,12 @@ import React, { useContext } from 'react'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { TodoContext, useTodoContext } from '@/context/Todo';
 import TodoField from '@/components/TodoField';
+import CatogariseContainer from '@/components/CatogariseContainer';
 const app = () => {
     const {showModal} = useTodoContext();
   return (
     <View style={{flex: 1}}>
+      <CatogariseContainer></CatogariseContainer>
          <View style={styles.ShowListBtnContainer}>
            <TouchableOpacity onPress={()=> showModal(true)} style={styles.ShowListBtn}>
            <FontAwesome6 name="add" size={24} color="white" />

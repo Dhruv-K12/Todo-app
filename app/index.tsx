@@ -3,7 +3,6 @@ import React from 'react'
 import App from './App';
 import { TodoContextProvider } from '@/context/Todo';
 const index = () => {
-  
   return (
     <TodoContextProvider>
       <App/>
