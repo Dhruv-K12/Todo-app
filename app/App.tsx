@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 import React, { useContext } from 'react'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { TodoContext, useTodoContext } from '@/context/Todo';
 import TodoField from '@/components/TodoField';
 import CatogariseContainer from '@/components/CatogariseContainer';
+import { optionsData } from '@/components/TodoField';
+import Fontisto from '@expo/vector-icons/Fontisto'; 
+import { optionType } from '@/components/TodoField';
 const app = () => {
     const {showModal} = useTodoContext();
+    const catogaries:optionType[] = [{catogary:"All", icons:<Fontisto name="world-o" size={40} color="black" />}, ...optionsData];
   return (
     <View style={{flex: 1}}>
-      <CatogariseContainer></CatogariseContainer>
+      <FlatList numColumns={2} data={catogaries} renderItem={({item})=>(
+        <CatogariseContainer name={item.catogary} icons={item.icons}/>
+  )}/>
          <View style={styles.ShowListBtnContainer}>
            <TouchableOpacity onPress={()=> showModal(true)} style={styles.ShowListBtn}>
            <FontAwesome6 name="add" size={24} color="white" />

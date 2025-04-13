@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 // 1. Define the context type
-interface taskType{
+export interface taskType{
   name: string;
   des?: string;
   catogary:string;
+  id: string
 }
 interface TodoContextType {
   modal: boolean;

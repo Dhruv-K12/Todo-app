@@ -5,11 +5,11 @@ import CatogariseOptions from './CatogariseOptions'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Feather from '@expo/vector-icons/Feather';
-interface optionType{
+export interface optionType{
   catogary:string,
   icons: React.ReactElement
 }
-export const optionsData:optionType[] = [{catogary:'Home',icons:<AntDesign name='home' size={24}/>}, {catogary:'Work', icons: <MaterialIcons name='work-outline' size={24}/> }, {catogary:'Shopping', icons: <Feather name='shopping-bag' size={24}/>}];
+export const optionsData:optionType[] = [{catogary:'Home',icons:<AntDesign name='home' size={40}/>}, {catogary:'Work', icons: <MaterialIcons name='work-outline' size={40}/> }, {catogary:'Shopping', icons: <Feather name='shopping-bag' size={40}/>}];
 const TodoField = () => {
   const {modal, showModal, setTasker} = useTodoContext();
   const [options, selectedOptions] = useState<string>("Home");
@@ -17,7 +17,7 @@ const TodoField = () => {
   const [des, setDes] = useState<string>("");
   const addTaskHandler=()=>{
     if(task.trim()!=""){
-      setTasker(tasks=>[...tasks, {name: task, des: des,  catogary:options}]);
+      setTasker(tasks=>[...tasks, {name: task, des: des,  catogary:options, id: Math.random().toString()}]);
       showModal(false);
     }
   }
