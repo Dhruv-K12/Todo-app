@@ -2,11 +2,14 @@ import { StyleSheet, Text, View, Modal, TextInput, FlatList, Pressable } from 'r
 import React, {useState} from 'react'
 import { useTodoContext } from '@/context/Todo'
 import CatogariseOptions from './CatogariseOptions'
-
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Feather from '@expo/vector-icons/Feather';
 interface optionType{
-  catogary:string
+  catogary:string,
+  icons: React.ReactElement
 }
-export const optionsData:optionType[] = [{catogary:'Home',}, {catogary:'Work'}, {catogary:'Shopping'}];
+export const optionsData:optionType[] = [{catogary:'Home',icons:<AntDesign name='home' size={24}/>}, {catogary:'Work', icons: <MaterialIcons name='work-outline' size={24}/> }, {catogary:'Shopping', icons: <Feather name='shopping-bag' size={24}/>}];
 const TodoField = () => {
   const {modal, showModal, setTasker} = useTodoContext();
   const [options, selectedOptions] = useState<string>("Home");
@@ -20,12 +23,13 @@ const TodoField = () => {
   }
   return (
    <Modal visible={modal} animationType='slide'>
+    
     <View style={{flex: 1}}>
         <TextInput value={task} onChangeText={text=> setTask(text)}placeholder='Enter Your Title Here' style={styles.titleInput}/>
         <TextInput value={des} onChangeText={text=>setDes(text)} multiline placeholder='Enter Your Description (Optional)' style={[styles.titleInput, styles.desInput]}/>
         <View style={{justifyContent:"center", alignItems:"center"}}>
         <FlatList horizontal data={optionsData} renderItem={({item, index})=>(
-          <CatogariseOptions name={item.catogary} selectedOptions={selectedOptions} options={options} index={index}/>
+          <CatogariseOptions icons={item.icons} name={item.catogary} selectedOptions={selectedOptions} options={options} index={index}/>
         )}/>
         </View>
         <View style={styles.addListBtnContainer}>

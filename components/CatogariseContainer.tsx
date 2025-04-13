@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 const CatogariseContainer = () => {
+
   return (
     <View style={styles.container}>
       <Text style={styles.mainText}>All</Text>

@@ -21,8 +21,6 @@ export const TodoContext = createContext<TodoContextType | undefined>(undefined)
 export const TodoContextProvider = ({ children }: { children: ReactNode }) => {
   const [modal, setModal] = useState<boolean>(false);
   const [tasks, setTasks] = useState<taskType[]>([]);
-  console.log(tasks)
-
   const value = {
     modal,
     showModal: setModal,
