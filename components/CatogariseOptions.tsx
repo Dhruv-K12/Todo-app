@@ -9,15 +9,17 @@ interface props{
     options:string,
     index:number
 }
+
+
 const CatogariseOptions = ({name, selectedOptions, options, index}:props) => {
     const fillColor=()=>{
         return options == name? "white":"black"
     }
-    const icons = [
-       <AntDesign name="home" size={24} color={fillColor()} />,
-       <MaterialIcons name="work-outline" size={24} color={fillColor()} />,
-       <Feather name="shopping-bag" size={24} color={fillColor()} />
-    ]
+     const icons = [
+        <AntDesign name="home" size={24} color={fillColor()} />,
+        <MaterialIcons name="work-outline" size={24} color={fillColor()} />,
+        <Feather name="shopping-bag" size={24} color={fillColor()} />
+     ]
   return (
    <Pressable onPress={()=>selectedOptions(name)} style={[styles.option, name=="Home" &&{
     borderTopLeftRadius: 20,

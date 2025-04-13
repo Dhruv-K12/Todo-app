@@ -6,15 +6,17 @@ import CatogariseOptions from './CatogariseOptions'
 interface optionType{
   catogary:string
 }
-export const optionsData:optionType[] = [{catogary:'Home' }, {catogary:'Work'}, {catogary:'Shopping'}];
+export const optionsData:optionType[] = [{catogary:'Home',}, {catogary:'Work'}, {catogary:'Shopping'}];
 const TodoField = () => {
   const {modal, showModal, setTasker} = useTodoContext();
   const [options, selectedOptions] = useState<string>("Home");
   const [task, setTask] = useState<string>("");
   const [des, setDes] = useState<string>("");
   const addTaskHandler=()=>{
-    setTasker(tasks=>[...tasks, {name: task, des: des,  catogary:options}]);
-    showModal(false);
+    if(task.trim()!=""){
+      setTasker(tasks=>[...tasks, {name: task, des: des,  catogary:options}]);
+      showModal(false);
+    }
   }
   return (
    <Modal visible={modal} animationType='slide'>
