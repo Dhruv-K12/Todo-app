@@ -4,14 +4,14 @@ import App from './App';
 import { TodoContextProvider } from '@/context/Todo';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CatogariesDetails from './CatogariesDetails';
-const stack = createNativeStackNavigator();
 interface task{
   name:string
 }
 export type RootStackParamList = {
-  Home: undefined;
+  Main: undefined;
   Cato:{task: task};
 };
+const stack = createNativeStackNavigator<RootStackParamList>();
 const MyStack = ()=>{
   return(
     <stack.Navigator screenOptions={{headerShown:false}}>
