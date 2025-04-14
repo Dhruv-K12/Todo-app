@@ -7,9 +7,10 @@ import { useTodoContext } from '@/context/Todo';
 import Dialog from "react-native-dialog"
 interface props{
   name:string,
-  id: string
+  id: string;
+  isCompleted: boolean
 }
-const TodoItems = ({name, id}: props) => {
+const TodoItems = ({name, id, isCompleted}: props) => {
     const [checkBox, showCheckBox] = useState<boolean>(false);
     const [text, setText] = useState<string>(name);
     const {setTasker} = useTodoContext();
@@ -26,6 +27,10 @@ const TodoItems = ({name, id}: props) => {
         }
       }))
     }
+    const toggleComplete =()=>{
+      setTasker(tasks=> 
+        tasks.map((each)=>each.id == id? {...each, isCompleted:!each.isCompleted}:each))
+    }
   return (
     <View style={{flex: 1}}>
     <Pressable onPress={()=>showCheckBox(false)}  onLongPress={()=>showCheckBox(true)}  style={{backgroundColor:"yellow", width:"90%", height: 100, borderRadius: 20, margin:10, justifyContent:"space-around", alignItems:"center", flexDirection:"row"}}>
@@ -39,7 +44,7 @@ const TodoItems = ({name, id}: props) => {
       {
         checkBox&&
       <View>
-        <BouncyCheckbox fillColor='green'/>
+        <BouncyCheckbox onPress={toggleComplete} isChecked={isCompleted} fillColor='green'/>
       </View>
       }
     </Pressable>

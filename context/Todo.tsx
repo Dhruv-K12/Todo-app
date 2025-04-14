@@ -5,7 +5,8 @@ export interface taskType{
   name: string;
   des?: string;
   catogary:string;
-  id: string
+  id: string;
+  isCompleted:boolean;
 }
 interface TodoContextType {
   modal: boolean;
@@ -26,7 +27,7 @@ export const TodoContextProvider = ({ children }: { children: ReactNode }) => {
     modal,
     showModal: setModal,
     tasks,
-    setTasker:setTasks // <- using the correct function name
+    setTasker:setTasks ,// <- using the correct function name
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

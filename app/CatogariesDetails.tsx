@@ -16,7 +16,7 @@ const CatogariesDetails: React.FC<props> = ({route}) => {
     <View >
       <Text>{name}</Text>
       <FlatList data={name=='All'? tasks: tasks.filter((each)=>each.catogary == name)} renderItem={({item})=>(
-        <TodoItems name={item.name} id={item.id}/>
+        <TodoItems name={item.name} id={item.id} isCompleted={item.isCompleted}/>
       )}/>
     </View>
   )
