@@ -4,7 +4,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Todotools from './Todotools';
 import BouncyCheckbox from "react-native-bouncy-checkbox"
 import { useTodoContext } from '@/context/Todo';
-import Dialog from "react-native-dialog"
 interface props{
   name:string,
   id: string;

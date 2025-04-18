@@ -16,9 +16,10 @@ const TodoField = () => {
   const [task, setTask] = useState<string>("");
   const [des, setDes] = useState<string>("");
   const addTaskHandler=()=>{
-    if(task.trim()!=""){
+    if(task.trim().length !== 0 ){
       setTasker(tasks=>[...tasks, {name: task, des: des,  catogary:options, id: Math.random().toString(), isCompleted:false}]);
       showModal(false);
+      setTask('');
     }
   }
   return (

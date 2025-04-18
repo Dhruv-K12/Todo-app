@@ -7,9 +7,13 @@ import CatogariseContainer from '@/components/CatogariseContainer';
 import { optionsData } from '@/components/TodoField';
 import Fontisto from '@expo/vector-icons/Fontisto'; 
 import { optionType } from '@/components/TodoField';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 const app = () => {
     const {showModal} = useTodoContext();
-    const catogaries:optionType[] = [{catogary:"All", icons:<Fontisto name="world-o" size={40} color="black" />}, ...optionsData];
+    const catogaries:optionType[] = [{catogary:"All", icons:<Fontisto name="world-o" size={40} color="black" />}
+      , ...optionsData,
+       {catogary:"Completed", icons: <Ionicons name="checkmark-done" size={24} color="black" />},{ catogary: "Not Completed", icons: <MaterialIcons name="remove-done" size={24} color="black" /> }];
   return (
     <View style={{flex: 1}}>
       <FlatList numColumns={2} data={catogaries} renderItem={({item})=>(
