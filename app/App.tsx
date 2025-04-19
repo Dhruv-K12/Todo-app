@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { TodoContext, useTodoContext } from '@/context/Todo';
+import { taskType, TodoContext, useTodoContext } from '@/context/Todo';
 import TodoField from '@/components/TodoField';
 import CatogariseContainer from '@/components/CatogariseContainer';
 import { optionsData } from '@/components/TodoField';
@@ -9,8 +9,18 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import { optionType } from '@/components/TodoField';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const app = () => {
-    const {showModal} = useTodoContext();
+    const {showModal, setTasker} = useTodoContext();
+    const getItem =async()=>{
+     const data = await AsyncStorage.getItem("Items");
+     if(data!=null){
+      setTasker(JSON.parse(data));
+     }
+    }
+    useEffect(()=>{
+      getItem();
+    },[])
     const catogaries:optionType[] = [{catogary:"All", icons:<Fontisto name="world-o" size={40} color="black" />}
       , ...optionsData,
        {catogary:"Completed", icons: <Ionicons name="checkmark-done" size={24} color="black" />},{ catogary: "Not Completed", icons: <MaterialIcons name="remove-done" size={24} color="black" /> }];
